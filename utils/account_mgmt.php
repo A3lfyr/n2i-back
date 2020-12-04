@@ -52,7 +52,7 @@
      */
     function change_password($id, $new_password){
         $bdd=init_db();
-        $res = $bdd->query("UPDATE account SET token='$new_password' WHERE iduser=$id;");
+        $res = $bdd->query("UPDATE account SET password='$new_password' WHERE iduser=$id;");
         if ($res){
             return 1;
         }
