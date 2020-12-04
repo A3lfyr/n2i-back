@@ -5,6 +5,7 @@ session_start();
 include("../utils/messages.php");
 include("../utils/db_connect.php");
 include("../utils/jsonFunctions.php");
+include("../utils/cors.php");
 
 if($_SERVER['REQUEST_METHOD'] != "POST") {
     displayMethodNotAllowed();

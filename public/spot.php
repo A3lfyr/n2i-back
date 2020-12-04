@@ -3,6 +3,7 @@
 include("../utils/messages.php");
 include("../utils/sendFunctions.php");
 include("../utils/db_connect.php");
+include("../utils/cors.php");
 
 session_start();
 
