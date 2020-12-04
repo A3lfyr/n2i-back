@@ -4,20 +4,22 @@ session_start();
 
 include("../utils/messages.php");
 include("../utils/db_connect.php");
+include("../utils/jsonFunctions.php");
 
 if($_SERVER['REQUEST_METHOD'] != "POST") {
     displayMethodNotAllowed();
 }
 else {
-    if(!(isset($_POST['action'])?($_POST['action']=="add"):false)) {
+    $DATA = jsonExtractData();
+    if(!(isset($DATA['action'])?($DATA['action']=="add"):false)) {
         displayMethodNotAllowed();
     }
-    else if(!isset($_POST['username']) || !isset($_POST['password']) || !isset($_POST['remember'])) {
+    else if(!isset($DATA['username']) || !isset($DATA['password']) || !isset($DATA['remember'])) {
         displayBadRequest();
     }
     else {
         include("../utils/auth.php");
-        $authResult = account_auth($_POST['username'], $_POST['password']);
+        $authResult = account_auth($DATA['username'], $DATA['password']);
         if($authResult == 0) {
             showError(401, "Wrong credentials");
         }
