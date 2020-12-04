@@ -1,10 +1,15 @@
 <?php
 
-session_start();
-
 include("../utils/messages.php");
 include("../utils/sendFunctions.php");
 include("../utils/db_connect.php");
+
+session_start();
+
+if (!isset($_SESSION['userid'])) {
+    deliver_response(401, "", "");
+    exit();
+}
 
 if($_SERVER['REQUEST_METHOD'] != "GET") {
     displayMethodNotAllowed();
