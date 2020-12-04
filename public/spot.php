@@ -24,7 +24,7 @@ else{
         $result=$req->fetchAll(PDO::FETCH_ASSOC);
     
         if (count($result) == 0){
-            showError(200, "Aucun resultat pour cette recherche");
+            showError(404, "Aucun resultat pour cette recherche");
         }        
         else{
             deliver_response(200, "Bien recu", $result);
