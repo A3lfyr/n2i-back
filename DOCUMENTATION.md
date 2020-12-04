@@ -68,3 +68,16 @@ Contenu de la réponse :
 Si tout se passe bien, code de statut 200 avec le message `"Bien recu"`, puis les informations sur le spot demandé.
 Dans le cas d'une erreur dans les paramètre, une erreur 400 sera renvoyée, avec le message d'erreur `"Bad Request"`
 Si aucun spot n'est trouvé pour ces longitude/latitude, une erreur avec le code de statut 200 et le message `"Aucun resultat pour cette recherche"`
+=======
+Si aucun spot n'est trouvé pour ces longitude/latitude, une erreur avec le code de statut 404 et le message `"Aucun resultat pour cette recherche"`
+
+
+#### Spots
+
+**Chemin: ** `/spots.php`
+Méthode: GET
+
+Contenu de la réponse :
+Si tout se passe bien, code de statut 200 avec le message `"Bien recu"`, puis les informations sur tous les spots de la base de donnée.
+Si aucun spot n'est trouvé dans la base de donnée, une erreur avec le code de statut 404 et le message `"Aucun resultat pour cette recherche"`
+
