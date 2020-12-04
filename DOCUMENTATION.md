@@ -52,3 +52,19 @@ Paramètres attendus :
 
 Si tout se passe bien, code de statut 200 avec le message "d'erreur" `"Connected"`
 Dans le cas d'une erreur dans la requête SQL, erreur 520 ou erreur 409 dans le cas de duplicata par exemple d'adresse mail.
+=======
+### Requêtes
+
+#### Spot
+
+**Chemin: ** `/spot.php`
+Méthode: GET
+Paramètres attendus :
+
+- `longitude`: longitude du spot
+- `latitude`: latitude du spot
+
+Contenu de la réponse :
+Si tout se passe bien, code de statut 200 avec le message `"Bien recu"`, puis les informations sur le spot demandé.
+Dans le cas d'une erreur dans les paramètre, une erreur 400 sera renvoyée, avec le message d'erreur `"Bad Request"`
+Si aucun spot n'est trouvé pour ces longitude/latitude, une erreur avec le code de statut 200 et le message `"Aucun resultat pour cette recherche"`
