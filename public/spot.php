@@ -7,7 +7,7 @@ include("../utils/db_connect.php");
 session_start();
 
 if (!isset($_SESSION['userid'])) {
-    deliver_response(401, "", "");
+    displayForbidden();
     exit();
 }
 
