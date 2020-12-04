@@ -25,7 +25,38 @@
      */
     function delete_account($id){
         $bdd=init_db();
-        $bdd->query("DELETE FROM account WHERE iduser=$id");
+        $bdd->query("DELETE FROM account WHERE iduser=$id;");
     }
 
+    /** 
+     * Créer un token d'identification
+     * @param id identifiant du compte
+     * @return token retourne le token ou 0 en cas d'erreur
+     */
+    function create_token($id){
+        $token = bin2hex(random_bytes(16));
+        print($token);
+        $bdd=init_db();
+        $res = $bdd->query("UPDATE account SET token='$token' WHERE iduser=$id;");
+        if ($res){
+            return $token;
+        }
+        return 0;
+    }
+
+    /** 
+     * Change le mot de passe de l'utilisateur
+     * @param id identifiant du compte
+     * @param new_password nouveau mot de passe utilisateur
+     * @return boolean 
+     */
+    function change_password($id, $new_password){
+        $bdd=init_db();
+        $res = $bdd->query("UPDATE account SET token='$new_password' WHERE iduser=$id;");
+        if ($res){
+            return 1;
+        }
+        return 0;
+
+    }
 ?>
