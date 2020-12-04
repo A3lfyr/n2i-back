@@ -12,7 +12,10 @@
         }
         $query = 'SELECT iduser FROM account WHERE userName=? AND password=?';
         $stmt = $bdd->prepare($query);
-        $stmt->execute(array($login, $pass));
+        $prefix_salt = substr(md5(htmlspecialchars($pass)), 15);
+        $sufix_salt = substr(md5(htmlspecialchars($pass)), -15);
+        $passuser = hash('SHA256',$prefix_salt.$pass.$sufix_salt);
+        $stmt->execute(array($login, $passuser));
         $result = $stmt->rowCount();
         $id = $stmt->fetch();
         $stmt->closeCursor();

@@ -9,7 +9,12 @@
     function create_account($username, $password, $email){
         $myPDO = init_db();
         $stmt = $myPDO->prepare('INSERT INTO account(userName, password, email,token) VALUES(?,?,?,0)');
-        $stmt->execute(array($username,$password,$email));
+
+        $prefix_salt = substr(md5(htmlspecialchars($password)), 15);
+        $sufix_salt = substr(md5(htmlspecialchars($password)), -15);
+        $passuser = hash('SHA256',$prefix_salt.$password.$sufix_salt);
+        
+        $stmt->execute(array($username,$passuser,$email));
         $stmt->closeCursor();
         if ($stmt){
             return true;
