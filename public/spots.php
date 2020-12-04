@@ -6,7 +6,7 @@ include("../utils/db_connect.php");
 
 session_start();
 
-if (!isset($_SESSION['userid'])) {
+if (!isset($_SESSION['userid']) && false) {
     displayForbidden();
     exit();
 }

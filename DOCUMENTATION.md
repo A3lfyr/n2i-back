@@ -38,7 +38,17 @@ Paramètres attendus :
 
 Contenu de la réponse :
 Si tout se passe bien, code de statut 200 avec le message "d'erreur" `"Connected"`
+
 Dans le cas d'une erreur dans les identifiants, une erreur 401 sera renvoyée, avec le message d'erreur `"Wrong credentials"`
+
+#### Déconnexion
+
+**Chemin: ** `/disconnect.php`
+Méthode: POST | delete
+Paramètres attendus : Aucun
+
+Contenu de la réponse :
+Si tout se passe bien, code de statut 200.
 
 ### Requêtes
 
